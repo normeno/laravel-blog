@@ -1,0 +1,13 @@
+.dropdown-menu {
+    min-width: 110px;
+}
+
+.add_record {
+    margin: 0 0 20px 0;
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 100%;
+    }
+}

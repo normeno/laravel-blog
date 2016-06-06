@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -12,7 +13,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'avatar', 'role'
     ];
 
     /**
@@ -23,4 +24,25 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Encrypt Password
+     *
+     * @param $password
+     */
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
+
+    /**
+     * Upload Avatar File
+     *
+     * @param $avatar
+     */
+    public function setAvatarAttribute($avatar){
+        $this->attributes['avatar'] = Carbon::now()->second.$avatar->getClientOriginalName();
+        $name = Carbon::now()->second.$avatar->getClientOriginalName();
+        \Storage::disk('local')->put($name, \File::get($avatar));
+  }
 }

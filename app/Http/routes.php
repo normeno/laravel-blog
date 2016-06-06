@@ -15,8 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['middleware' => 'web'], function () {
+Route::group(['middlewareGroups' =>['web']], function () {
     Route::auth();
-    Route::get('/admin', 'HomeController@index');
- 
+    Route::get('user/datatable/{type?}', 'UserController@datatable');
+    Route::get('user/{type}/list', 'UserController@index');
+    Route::resource('user', 'UserController');
 });
+
+//Route::resource('user', 'UserController');
+
+//Route::auth();
+//Route::get('/home', 'HomeController@index');
