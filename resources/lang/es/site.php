@@ -15,5 +15,8 @@ return [
     'password_confirm'  =>  'Confirmar Contraseña',
     'avatar'            =>  'Avatar',
     'role'              =>  'Rol',
-    'list_of'           =>  'Listado de :section'
+    'list_of'           =>  'Listado de :section',
+    'profile'           =>  'Perfil',
+    'profile_of'        =>  'Perfil de :profile',
+    'back'              =>  'Volver'
 ];

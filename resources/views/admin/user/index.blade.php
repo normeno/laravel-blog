@@ -56,7 +56,7 @@
     <script>
         $(function() {
 
-            $('.table').DataTable({
+            var table = $('.table').DataTable({
                 processing: true,
                 serverSide: true,
                 dom: 'Bfrtip',
@@ -70,23 +70,21 @@
                     { data: 'role', name: 'role' },
                     { data: 'created_at', name: 'created_at' },
                     { data: 'updated_at', name: 'updated_at' },
-                    {
-                        data: null,
-                        className: "center",
-                        defaultContent: btnActions()
-                    }
+                    { data: 'operations', name: 'operations' },
                 ]
             });
         });
 
         function btnActions() {
-            var btnView, btnEdit, btnDelete;
+            var btnView, btnEdit, btnDelete, btnMore;
 
-            btnView = '<a href="" class="btn btn-default btn-xs"><i class="fa fa-eye"></i> View</a>';
+            btnView =   '<button class="btn btn-default btn-xs btnView">' +
+                            '<i class="fa fa-eye"></i> View' +
+                        '</button>';
 
-            btnEdit = '<li><a href="" class="editor_remove">Edit</a></li>';
+            btnEdit = '<li class="btnEdit"><a href="#">Edit</a></li>';
 
-            btnDelete = '<li><a href="" class="editor_remove">Delete</a></li>';
+            btnDelete = '<li class="btnDelete"><a href="#">Delete</a></li>';
 
             btnMore = '<div class="btn-group">' +
                         '<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">'+

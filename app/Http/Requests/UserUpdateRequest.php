@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class UserCreateRequest extends Request
+class UserUpdateRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +23,13 @@ class UserCreateRequest extends Request
      */
     public function rules()
     {
+        $id = $this->input('id');
+
         return [
             'name'      =>  'required|max:45',
-            'email'     =>  'required|email|unique:users,email|max:65',
+            'email'     =>  'required|email|unique:users,email,'.$id,
             'password'  =>  'min:6|confirmed',
+            'avatar'    =>  'image',
             'role'      =>  'required'
         ];
     }

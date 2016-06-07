@@ -26,7 +26,8 @@
 
                         {!!Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'PUT', 'files' => true])!!}
 
-                        @include('admin.user.form')
+                            {!! Form::hidden('id', $user->id) !!}
+                            @include('admin.user.form')
 
                         {!!Form::close()!!}
                     </div>

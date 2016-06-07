@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\User;
 use Yajra\Datatables\Facades\Datatables;
+use Session;
+use Redirect;
 
 class UserController extends Controller
 {
@@ -53,7 +56,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::find($id);
+        return view('admin.user.show', compact('user'));
     }
 
     /**
@@ -72,11 +76,11 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param UserUpdateRequest|Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
         $user = User::find($id);
         $user->fill($request->all());
@@ -99,6 +103,16 @@ class UserController extends Controller
 
     public function datatable($type = null)
     {
-        return Datatables::of(User::all())->make(true);
+        //return Datatables::of(User::all())->make(true);
+        $user = User::all();
+
+
+        return Datatables::of($user)
+            ->addColumn('operations',
+                '<a href="{{ URL::route( \'user.edit\', [$id] ) }}">edit</a>
+                 <a href="{{ URL::route( \'user.destroy\', [$id] ) }}">delete</a>
+                ')
+            ->removeColumn('id')
+            ->make(true);
     }
 }
