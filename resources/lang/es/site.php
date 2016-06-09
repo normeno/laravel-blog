@@ -18,5 +18,11 @@ return [
     'list_of'           =>  'Listado de :section',
     'profile'           =>  'Perfil',
     'profile_of'        =>  'Perfil de :profile',
-    'back'              =>  'Volver'
+    'back'              =>  'Volver',
+    'bio'               =>  'Biografía',
+    'webpage'           =>  'Página web',
+    'facebook'          =>  'Facebook',
+    'twitter'           =>  'Twitter',
+    'save'              =>  'Guardar',
+    'register'          =>  'Registrar'
 ];

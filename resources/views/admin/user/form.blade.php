@@ -1,35 +1,23 @@
 {!! csrf_field() !!}
 
-<div class="form-group">
-    {!! Form::label(trans('adminlte_lang::message.fullname')) !!}
-    {!! Form::text( 'name', null, ['class' => 'form-control', 'placeholder' => trans('site.enter_', ['enter' => trans('adminlte_lang::message.fullname')] ) ])!!}
-</div>
+{!! bfSimpleInput('text', 'name', trans('adminlte_lang::message.fullname')) !!}
 
-<div class="form-group">
-    {!! Form::label(trans('adminlte_lang::message.email')) !!}
-    {!! Form::email( 'email', null, ['class' => 'form-control', 'placeholder' => trans('site.enter_', ['enter' => trans('adminlte_lang::message.email')] ) ])!!}
-</div>
+{!! bfSimpleInput('email', 'email', trans('adminlte_lang::message.email')) !!}
 
-<div class="form-group">
-    {!!Form::label(trans('adminlte_lang::message.password'))!!}
-    {!!Form::password('password', ['class' => 'form-control', 'placeholder' => trans('site.enter_', ['enter' => trans('adminlte_lang::message.password')]) ])!!}
-</div>
+{!! bfPassword('password', trans('adminlte_lang::message.password'))  !!}
 
-<div class="form-group">
-    {!!Form::label(trans('site.password_confirm'))!!}
-    {!!Form::password('password_confirmation', ['class' => 'form-control', 'placeholder' => trans('site.password_confirm') ])!!}
-</div>
+{!! bfPassword('password_confirmation', trans('site.password_confirm'))  !!}
 
-<div class="form-group">
-    {!!Form::label(trans('site.role'))!!}
-    {!!Form::select('role', Config::get('enums.roles'), null, ['class' => 'form-control', 'role' => trans('site.password_confirm') ])!!}
-</div>
+{!! bfDropDown('role', Config::get('enums.roles'), trans('site.role'))  !!}
 
-<div class="form-group">
-    {!! Form::label(trans('site.avatar')) !!}
-    {!! Form::file('avatar', ['class' => 'form-control', 'placeholder' => trans('site.enter_', ['enter' => trans('Avatar')]) ])!!}
-</div>
+{!! bfFile('avatar', trans('site.avatar'))  !!}
 
-<div class="form-group">
-    {!!Form::submit('Registrar', ['class' => 'btn btn-primary'])!!}
-</div>
+{!! bfWithPre('web', trans('site.webpage'), 'http://')  !!}
+
+{!! bfWithPre('twitter', trans('site.twitter'), '<i class="fa fa-twitter"></i>')  !!}
+
+{!! bfWithPre('facebook', trans('site.facebook'), '<i class="fa fa-facebook"></i>')  !!}
+
+{!! bfSimpleInput('textArea', 'biography', trans('site.bio'), 'tinymce') !!}
+
+{!! bfSubmit(trans('site.register')) !!}

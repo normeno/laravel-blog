@@ -158,8 +158,9 @@ return [
 
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Yajra\Datatables\DatatablesServiceProvider::class
-
+        Yajra\Datatables\DatatablesServiceProvider::class,
+        Ktquez\Tinymce\TinymceServiceProvider::class,
+        RachidLaasri\LaravelInstaller\Providers\LaravelInstallerServiceProvider::class,
     ],
 
     /*
