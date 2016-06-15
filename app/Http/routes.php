@@ -48,4 +48,10 @@ Route::group(['middlewareGroups' =>['web']], function () {
         'as'    =>  'install.finish',
         'uses'  =>  'InstallController@finish'
     ]);
+
+    Route::get('frontend', [
+        function(){
+            return view('frontend.post.index');
+        }
+    ]);
 });
