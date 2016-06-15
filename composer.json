@@ -10,8 +10,7 @@
         "acacha/admin-lte-template-laravel": "2.*",
         "laravelcollective/html": "5.2.*",
         "yajra/laravel-datatables-oracle": "~6.0",
-        "ktquez/laravel-tinymce": "^1.0",
-        "rachidlaasri/laravel-installer": "1.4.1"
+        "ktquez/laravel-tinymce": "^1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

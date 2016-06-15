@@ -62,6 +62,11 @@ return [
             'bucket' => 'your-bucket',
         ],
 
+        'root' => [
+            'driver' => 'local',
+            'root' => base_path(),
+        ],
+
     ],
 
 ];

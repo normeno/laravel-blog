@@ -4,16 +4,26 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
+    use SoftDeletes;
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'avatar', 'role'
+        'name', 'email', 'password', 'avatar', 'role', 'web', 'twitter', 'facebook', 'biography'
     ];
 
     /**
@@ -41,8 +51,10 @@ class User extends Authenticatable
      * @param $avatar
      */
     public function setAvatarAttribute($avatar){
-        $this->attributes['avatar'] = Carbon::now()->second.$avatar->getClientOriginalName();
-        $name = Carbon::now()->second.$avatar->getClientOriginalName();
-        \Storage::disk('local')->put($name, \File::get($avatar));
+        if(!empty($avatar)) {
+            $this->attributes['avatar'] = Carbon::now()->second.$avatar->getClientOriginalName();
+            $name = Carbon::now()->second.$avatar->getClientOriginalName();
+            \Storage::disk('local')->put($name, \File::get($avatar));
+        }
   }
 }

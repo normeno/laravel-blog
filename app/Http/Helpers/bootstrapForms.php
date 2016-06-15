@@ -6,13 +6,13 @@
  * Time: 20:04
  */
 
-function bfSimpleInput($type, $field, $name, $class = '')
+function bfSimpleInput($type, $field, $name, $class = '', $value = null)
 {
     $html = "<div class='form-group'>" .
                 Form::label($name) .
                 Form::$type(
                     $field,
-                    null,
+                    $value,
                     [
                         'class' => 'form-control '.$class.'',
                         'placeholder' => trans('site.enter_', ['enter' => $name] )

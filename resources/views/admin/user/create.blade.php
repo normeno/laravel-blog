@@ -21,7 +21,7 @@
                     <div class="panel-body">
 
                         @if(count($errors) > 0)
-                            @include('admin.alerts.error')
+                            @include('alerts.error')
                         @endif
 
                         {!!Form::open(['route' => 'user.store', 'method' => 'POST', 'files' => true])!!}

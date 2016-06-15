@@ -21,7 +21,7 @@
                     <div class="panel-body">
 
                         @if(count($errors) > 0)
-                            @include('admin.alerts.error')
+                            @include('alerts.error')
                         @endif
 
                         {!!Form::model($user, ['route' => ['user.update', $user->id], 'method' => 'PUT', 'files' => true])!!}
