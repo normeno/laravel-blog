@@ -1,8 +1,17 @@
 <?php
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+Route::get('/', [
+    'as' => 'posts.home',
+    'uses' => 'PostController@home'
+]);
+
+Route::get('/{category}/{post}', [
+    'as' => 'posts.view',
+    'uses' => 'PostController@view'
+]);
 
 Route::group(['middlewareGroups' =>['web']], function () {
     Route::auth();
@@ -51,7 +60,9 @@ Route::group(['middlewareGroups' =>['web']], function () {
 
     Route::get('frontend', [
         function(){
-            return view('frontend.post.index');
+            $categories = App\Category::all();
+            $posts = App\Post::all();
+            return view('frontend.post.index', compact('categories', 'posts'));
         }
     ]);
 });

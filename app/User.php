@@ -35,6 +35,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
+    }
+
     /**
      * Encrypt Password
      *
@@ -50,11 +55,12 @@ class User extends Authenticatable
      *
      * @param $avatar
      */
-    public function setAvatarAttribute($avatar){
-        if(!empty($avatar)) {
+    public function setAvatarAttribute($avatar)
+    {
+        if(!empty($avatar) && is_file($avatar)) {
             $this->attributes['avatar'] = Carbon::now()->second.$avatar->getClientOriginalName();
             $name = Carbon::now()->second.$avatar->getClientOriginalName();
             \Storage::disk('local')->put($name, \File::get($avatar));
         }
-  }
+    }
 }

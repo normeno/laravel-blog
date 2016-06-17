@@ -24,5 +24,8 @@ return [
     'facebook'          =>  'Facebook',
     'twitter'           =>  'Twitter',
     'save'              =>  'Guardar',
-    'register'          =>  'Registrar'
+    'register'          =>  'Registrar',
+    'categories'        =>  'Categorías',
+    'follow_us'         =>  'síguenos',
+    'featured'          =>  'destacados'
 ];
